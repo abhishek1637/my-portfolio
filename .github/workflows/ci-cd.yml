@@ -41,3 +41,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build  # Change this to your build directory
+        email_user: ${{ secrets.EMAIL_USER }}
+        email_pass: ${{ secrets.EMAIL_PASS }}

@@ -4,6 +4,10 @@ import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { ExperienceCard } from "./ExperienceCard";
+import {ProjectCard} from "./ProjectCard";
+import projImg1 from "../assets/img/my-portfolio-img.png";
+import projImg2 from "../assets/img/e-learning.jpg";
+import projImg3 from "../assets/img/heart-disease.jpg";
 
 const myExperiencesInPowerSchool = {
   engineer1: {
@@ -48,6 +52,30 @@ const myExperiencesInPowerSchool = {
   }
 };
 
+const projects = [
+  {
+    title: "My Portfolio",
+    description: "My portfolio project, built using React and Bootstrap, showcases my skills, projects, and experiences in a visually appealing and responsive manner",
+    imgUrl: projImg1,
+    sourceCode: 'https://github.com/abhishek1637/my-portfolio',
+    deploymentLink: 'https://google.com',
+  },
+  {
+    title: "e-Learning website",
+    description: "My e-learning project, developed using HTML, CSS, JavaScript, and PHP, offers an interactive platform for users to access educational materials and engage in online learning activities",
+    imgUrl: projImg2,
+    sourceCode: 'https://github.com/abhishek1637/e-learning',
+    deploymentLink: '',
+  },
+  {
+    title: "Heart Disease Prediction",
+    description: "My heart disease prediction project, one of my college project, implemented in R language using the Naive Bayes algorithm and other data mining techniques, aims to provide accurate predictions of heart disease risk based on various patient attributes and medical data.",
+    imgUrl: projImg3,
+    sourceCode: 'https://github.com/abhishek1637/Heart-disease-prediction/tree/main',
+    deploymentLink: '',
+  },
+];
+
 export const Experience = () => {
   const [activeTab, setActiveTab] = useState("");
 
@@ -72,7 +100,7 @@ export const Experience = () => {
           <Col size={12}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
+              <div className={`animate__animated ${isVisible ? "animate__fadeIn" : ""}`}>
                 <h2>Experiences </h2> <br />
                 <Tab.Container id="projects-tabs" defaultActiveKey="powerSchool" activeKey={activeTab} onSelect={(key) => setActiveTab(key)}>
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
@@ -133,6 +161,18 @@ export const Experience = () => {
                     {activeTab === "myProjects" &&
                       <Tab.Pane eventKey="myProjects">
                         {/* Content for My Projects tab goes here */}
+                        <Row>
+                        {
+                          projects.map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                       </Tab.Pane>
                     }
                   </Tab.Content>

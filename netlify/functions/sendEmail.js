@@ -14,6 +14,9 @@ exports.handler = async function (event, context) {
     },
   });
 
+  console.log('username', process.env.EMAIL_USER);
+  console.log('password', process.env.EMAIL_PASS);
+
   // Compose email
   const mailOptions = {
     from: `${firstName} ${lastName}`,

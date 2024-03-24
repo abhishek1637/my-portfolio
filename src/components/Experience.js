@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
@@ -47,8 +48,23 @@ const myExperiencesInPowerSchool = {
   }
 };
 
-
 export const Experience = () => {
+  const [activeTab, setActiveTab] = useState("");
+
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (event.target.closest("#projects") === null) {
+          setActiveTab("");
+        }
+      };
+  
+      document.body.addEventListener("click", handleClickOutside);
+  
+      return () => {
+        document.body.removeEventListener("click", handleClickOutside);
+      };
+    }, []);
+
   return (
     <section className="project" id="projects">
       <Container>
@@ -57,44 +73,68 @@ export const Experience = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>Experiences </h2>
-                <Tab.Container id="projects-tabs" defaultActiveKey="first">
+                <h2>Experiences </h2> <br />
+                <Tab.Container id="projects-tabs" defaultActiveKey="powerSchool" activeKey={activeTab} onSelect={(key) => setActiveTab(key)}>
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Engineer 1</Nav.Link>
+                      <Nav.Link eventKey="powerSchool">PowerSchool</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">Associate Engineer 2</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="third">Engineering Intern</Nav.Link>
+                      <Nav.Link eventKey="myProjects">My Projects</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                    <Tab.Pane eventKey="first">
-                     <ExperienceCard 
-                      startDate={myExperiencesInPowerSchool.engineer1.startDate}
-                      endDate={myExperiencesInPowerSchool.engineer1.endDate}
-                      location={myExperiencesInPowerSchool.engineer1.location}
-                      bulletPoints={myExperiencesInPowerSchool.engineer1.bulletPoints}
-                     />
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="second">
-                    <ExperienceCard 
-                      startDate={myExperiencesInPowerSchool.associateEngineer2.startDate}
-                      endDate={myExperiencesInPowerSchool.associateEngineer2.endDate}
-                      location={myExperiencesInPowerSchool.associateEngineer2.location}
-                      bulletPoints={myExperiencesInPowerSchool.associateEngineer2.bulletPoints}
-                     />
-                     </Tab.Pane>
-                    <Tab.Pane eventKey="third">
-                    <ExperienceCard 
-                      startDate={myExperiencesInPowerSchool.engineeringIntern.startDate}
-                      endDate={myExperiencesInPowerSchool.engineeringIntern.endDate}
-                      location={myExperiencesInPowerSchool.engineeringIntern.location}
-                      bulletPoints={myExperiencesInPowerSchool.engineeringIntern.bulletPoints}
-                     />
-                    </Tab.Pane>
+                    {(activeTab === "powerSchool" || activeTab === "first" || activeTab === "second" || activeTab === "third") &&
+                      <>
+                        <Tab.Pane eventKey="powerSchool">
+                          {/* Content for PowerSchool tab goes here */}
+                        </Tab.Pane>
+                        <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+                          <Nav.Item>
+                            <Nav.Link eventKey="first">Engineer 1</Nav.Link>
+                          </Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="second">Associate Engineer 2</Nav.Link>
+                          </Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="third">Engineering Intern</Nav.Link>
+                          </Nav.Item>
+                        </Nav>
+                      </>
+                    }
+                    {activeTab !== "myProjects" &&
+                      <>
+                        <Tab.Pane eventKey="first">
+                          <ExperienceCard 
+                            startDate={myExperiencesInPowerSchool.engineer1.startDate}
+                            endDate={myExperiencesInPowerSchool.engineer1.endDate}
+                            location={myExperiencesInPowerSchool.engineer1.location}
+                            bulletPoints={myExperiencesInPowerSchool.engineer1.bulletPoints}
+                          />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="second">
+                          <ExperienceCard 
+                            startDate={myExperiencesInPowerSchool.associateEngineer2.startDate}
+                            endDate={myExperiencesInPowerSchool.associateEngineer2.endDate}
+                            location={myExperiencesInPowerSchool.associateEngineer2.location}
+                            bulletPoints={myExperiencesInPowerSchool.associateEngineer2.bulletPoints}
+                          />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="third">
+                          <ExperienceCard 
+                            startDate={myExperiencesInPowerSchool.engineeringIntern.startDate}
+                            endDate={myExperiencesInPowerSchool.engineeringIntern.endDate}
+                            location={myExperiencesInPowerSchool.engineeringIntern.location}
+                            bulletPoints={myExperiencesInPowerSchool.engineeringIntern.bulletPoints}
+                          />
+                        </Tab.Pane>
+                      </>
+                    }
+                    {activeTab === "myProjects" &&
+                      <Tab.Pane eventKey="myProjects">
+                        {/* Content for My Projects tab goes here */}
+                      </Tab.Pane>
+                    }
                   </Tab.Content>
                 </Tab.Container>
               </div>}

@@ -10,7 +10,7 @@ exports.handler = async function (event, context) {
   const transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
     port: 587,
-    secure: false, // true for 465, false for other ports
+    // secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
@@ -18,9 +18,6 @@ exports.handler = async function (event, context) {
   });
 
   const sendEmailId = process.env.EMAIL_USER;
-
-  console.log('username', sendEmailId);
-  console.log('password', process.env.EMAIL_PASS);
 
   // Compose email
   const mailOptions = {

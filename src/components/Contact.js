@@ -36,7 +36,8 @@ export const Contact = () => {
     setButtonText("Send");
     let result = await response.json();
     setFormDetails(formInitialDetails);
-    // eslint-disable-next-line
+    console.log('result: ', result);
+        // eslint-disable-next-line
     if (result.code == 200) {
       setStatus({ succes: true, message: 'Message sent successfully'});
     } else {

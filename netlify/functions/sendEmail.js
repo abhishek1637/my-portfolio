@@ -17,21 +17,6 @@ exports.handler = async function (event, context) {
     }
   });
 
-//   const transporter = nodemailer.createTransport("SMTP", {
-//     host: "smtp-mail.outlook.com",
-//     secureConnection: false, 
-//     port: 587, 
-//     auth: {
-//       xoauth2: xoauth2.createXOAuth2Generator({
-//         user: process.env.EMAIL_USER,
-//         pass: process.env.EMAIL_PASS,
-//      })
-//     },
-//     tls: {
-//         ciphers:'SSLv3'
-//     }
-// });
-
   const sendEmailId = process.env.EMAIL_USER;
 
   console.log('username', sendEmailId);

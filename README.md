@@ -1,8 +1,8 @@
-# my Personal Portfolio Website in React
+# My Personal Portfolio Website in React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://user-images.githubusercontent.com/50160672/174933373-1ba6cadf-1c9a-48c3-aa58-984d0bd62d82.png">
+<img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://drive.google.com/file/d/1F6j_afJOLb0n10w0XYJ3YOhS5H4fdYRW/view?usp=sharing">
 
 Built using:
 
@@ -10,7 +10,7 @@ Built using:
 - CSS framework: React-bootstrap
 - CSS animations library: Animate.css
 
-In the /personal-portfolio, you can run:
+In the /my-portfolio, you can run:
 
 ### `npm start`
 
@@ -23,7 +23,6 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -33,4 +32,4 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+See the section about [deployment](https://abhishek-work.netlify.app/) for more information.

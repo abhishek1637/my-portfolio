@@ -3,6 +3,8 @@ import { Newsletter } from "./Newsletter";
 
 export const MailchimpForm = () => {
   const postUrl = `${process.env.MAILCHIMP_URL}?u=${process.env.MAILCHIMP_U}&id=${process.env.MAILCHIMP_ID}`;
+  console.log('posturl: ' , postUrl);
+  console.log(process.env.EMAIL_USER);
 
   return (
     <>

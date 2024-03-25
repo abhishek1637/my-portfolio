@@ -36,10 +36,12 @@ export const Contact = () => {
     setButtonText("Send");
     let result = await response.json();
     setFormDetails(formInitialDetails);
-    console.log('result: ', result);
         // eslint-disable-next-line
     if (result.statusCode == 200) {
       setStatus({ succes: true, message: 'Message sent successfully'});
+      setTimeout(() => {
+        setStatus({});
+      }, 3000);
     } else {
       setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
     }

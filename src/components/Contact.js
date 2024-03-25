@@ -17,11 +17,24 @@ export const Contact = () => {
   const [status, setStatus] = useState({});
 
   const onFormUpdate = (category, value) => {
+    setStatus({});
       setFormDetails({
         ...formDetails,
         [category]: value
       })
   }
+
+  const validateEmail = (email) => {
+    // Regular expression for email validation
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    // Regular expression for phone number validation
+    const regex = /^\d{10}$/;
+    return regex.test(phone);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +43,16 @@ export const Contact = () => {
       setStatus({ succes: false, message: 'Please fill in all fields.'});
       return;
     }
+
+    if (!validateEmail(email)) {
+      setStatus({ success: false, message: 'Please enter a valid email address.' });
+      return;
+    }
+    if (!validatePhone(phone)) {
+      setStatus({ success: false, message: 'Please enter a valid 10-digit phone number.' });
+      return;
+    }
+
     setButtonText("Sending...");
     let response = await fetch("/.netlify/functions/sendEmail", {
       method: "POST",

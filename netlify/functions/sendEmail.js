@@ -2,6 +2,7 @@
 
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
+const xoauth2 = require('xoauth2');
 
 exports.handler = async function (event, context) {
   const { firstName, lastName, email, phone, message } = JSON.parse(event.body);
@@ -21,8 +22,10 @@ exports.handler = async function (event, context) {
     secureConnection: false, 
     port: 587, 
     auth: {
+      xoauth2: xoauth2.createXOAuth2Generator({
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        pass: process.env.EMAIL_PASS,
+     })
     },
     tls: {
         ciphers:'SSLv3'

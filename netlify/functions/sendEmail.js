@@ -22,7 +22,7 @@ exports.handler = async function (event, context) {
   // Compose email
   const mailOptions = {
     from: `${firstName} ${lastName}`,
-    to: "abhishek.work7050@gmail.com",
+    to: sendEmailId,
     subject: 'Contact Form Submission - Portfolio',
     html: `
       <p>Name: ${firstName} ${lastName}</p>
@@ -37,13 +37,13 @@ exports.handler = async function (event, context) {
     await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Email sent successfully' }),
+      body: JSON.stringify({ statusCode: 200, message: 'Email sent successfully' }),
     };
   } catch (error) {
     console.log(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send email' }),
+      body: JSON.stringify({ statusCode: 500, error: 'Failed to send email' }),
     };
   }
 };

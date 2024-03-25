@@ -38,7 +38,7 @@ export const Contact = () => {
     setFormDetails(formInitialDetails);
     console.log('result: ', result);
         // eslint-disable-next-line
-    if (result.code == 200) {
+    if (result.statusCode == 200) {
       setStatus({ succes: true, message: 'Message sent successfully'});
     } else {
       setStatus({ succes: false, message: 'Something went wrong, please try again later.'});

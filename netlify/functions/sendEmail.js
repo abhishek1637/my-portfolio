@@ -7,17 +7,25 @@ const nodemailer = require('nodemailer');
 exports.handler = async function (event, context) {
   const { firstName, lastName, email, phone, message } = JSON.parse(event.body);
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp-mail.outlook.com",
-    port: 587,
-    // secure: false, // true for 465, false for other ports
-    auth: { 
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    tls: {
-      ciphers: 'SSLv3', // You can set the required cipher here
-    },
+  // const transporter = nodemailer.createTransport({
+  //   host: "smtp-mail.outlook.com",
+  //   port: 587,
+  //   // secure: false, // true for 465, false for other ports
+  //   auth: { 
+  //       user: process.env.EMAIL_USER,
+  //       pass: process.env.EMAIL_PASS
+  //   },
+  //   tls: {
+  //     ciphers: 'SSLv3', // You can set the required cipher here
+  //   },
+  // });
+
+  var transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: 'abhishek.work7050@gmail.com',
+      pass: 'cwmqbyzunlgbgrrn'
+    }
   });
 
   const sendEmailId = process.env.EMAIL_USER;

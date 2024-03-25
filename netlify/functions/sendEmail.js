@@ -1,36 +1,36 @@
 // functions/sendEmail.js
 
 const nodemailer = require('nodemailer');
-const smtpTransport = require('nodemailer-smtp-transport');
-const xoauth2 = require('xoauth2');
+// const smtpTransport = require('nodemailer-smtp-transport');
+// const xoauth2 = require('xoauth2');
 
 exports.handler = async function (event, context) {
   const { firstName, lastName, email, phone, message } = JSON.parse(event.body);
 
-  // Create Nodemailer transporter
-  // const transporter = nodemailer.createTransport(smtpTransport({
-  //   service: 'gmail',
-  //   host: 'smtp.gmail.com',
-  //   auth: {
-  //     user: process.env.EMAIL_USER,
-  //     pass: process.env.EMAIL_PASS,
-  //   },
-  // }));
-
-  const transporter = nodemailer.createTransport("SMTP", {
+  const transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
-    secureConnection: false, 
-    port: 587, 
+    port: 587,
+    secure: false, // true for 465, false for other ports
     auth: {
-      xoauth2: xoauth2.createXOAuth2Generator({
-        user: 'abhishek.work7050@outlook.com',
-        pass: 'Abhi12shek#',
-     })
-    },
-    tls: {
-        ciphers:'SSLv3'
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
     }
-});
+  });
+
+//   const transporter = nodemailer.createTransport("SMTP", {
+//     host: "smtp-mail.outlook.com",
+//     secureConnection: false, 
+//     port: 587, 
+//     auth: {
+//       xoauth2: xoauth2.createXOAuth2Generator({
+//         user: process.env.EMAIL_USER,
+//         pass: process.env.EMAIL_PASS,
+//      })
+//     },
+//     tls: {
+//         ciphers:'SSLv3'
+//     }
+// });
 
   const sendEmailId = process.env.EMAIL_USER;
 

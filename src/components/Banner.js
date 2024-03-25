@@ -60,7 +60,7 @@ export const Banner = () => {
                 <span className="tagline">Welcome to my Portfolio</span>
                 <h1>{`Hi! I'm Abhishek - `} <span className="txt-rotate" dataPeriod="100" data-rotate='[ "Full Stack Developer", "Web Designer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Versatile Full Stack Developer with 3+ years of experience in React, Redux, PHP, Java, AWS, Micro-Frontend, Laravel, REST API, and Gen AI integration, adept at
-                        crafting scalable web applications and driving project success through collaborative teamwork</p>
+                        crafting scalable web applications and driving project success through collaborative teamwork.</p>
                   <button onClick={() => window.location.href = '#connect'}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>

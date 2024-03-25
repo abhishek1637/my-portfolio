@@ -25,6 +25,11 @@ export const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { firstName, lastName, email, phone, message } = formDetails;
+    if (!firstName || !lastName || !email || !phone || !message) {
+      setStatus({ succes: false, message: 'Please fill in all fields.'});
+      return;
+    }
     setButtonText("Sending...");
     let response = await fetch("/.netlify/functions/sendEmail", {
       method: "POST",

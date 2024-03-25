@@ -102,6 +102,7 @@ export const Experience = () => {
               {({ isVisible }) =>
               <div className={`animate__animated ${isVisible ? "animate__fadeIn" : ""}`}>
                 <h2>Experiences </h2> <br />
+                <p style={{color: "#777", fontSize: "0.9rem", marginBottom: "20px"}}>Click the respective tabs to see my experiences or projects.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="powerSchool" activeKey={activeTab} onSelect={(key) => setActiveTab(key)}>
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>

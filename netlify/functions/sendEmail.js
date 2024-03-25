@@ -7,14 +7,27 @@ exports.handler = async function (event, context) {
   const { firstName, lastName, email, phone, message } = JSON.parse(event.body);
 
   // Create Nodemailer transporter
-  const transporter = nodemailer.createTransport(smtpTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
+  // const transporter = nodemailer.createTransport(smtpTransport({
+  //   service: 'gmail',
+  //   host: 'smtp.gmail.com',
+  //   auth: {
+  //     user: process.env.EMAIL_USER,
+  //     pass: process.env.EMAIL_PASS,
+  //   },
+  // }));
+
+  const transporter = nodemailer.createTransport("SMTP", {
+    host: "smtp-mail.outlook.com",
+    secureConnection: false, 
+    port: 587, 
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     },
-  }));
+    tls: {
+        ciphers:'SSLv3'
+    }
+});
 
   const sendEmailId = process.env.EMAIL_USER;
 
@@ -24,9 +37,9 @@ exports.handler = async function (event, context) {
   // Compose email
   const mailOptions = {
     from: `${firstName} ${lastName}`,
-    to: sendEmailId,
+    to: "abhishek.work7050@gmail.com",
     subject: 'Contact Form Submission - Portfolio',
-    text: `
+    html: `
       <p>Name: ${firstName} ${lastName}</p>
       <p>Email: ${email}</p>
       <p>Phone: ${phone}</p>

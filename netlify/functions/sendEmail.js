@@ -23,8 +23,8 @@ exports.handler = async function (event, context) {
     port: 587, 
     auth: {
       xoauth2: xoauth2.createXOAuth2Generator({
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: 'abhishek.work7050@outlook.com',
+        pass: 'Abhi12shek#',
      })
     },
     tls: {

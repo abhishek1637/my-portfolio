@@ -2,8 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://drive.google.com/file/d/1F6j_afJOLb0n10w0XYJ3YOhS5H4fdYRW/view?usp=sharing">
-
+<!-- <img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://drive.google.com/file/d/1F6j_afJOLb0n10w0XYJ3YOhS5H4fdYRW/view?usp=sharing"> -->
+<iframe src="https://drive.google.com/file/d/1F6j_afJOLb0n10w0XYJ3YOhS5H4fdYRW/preview" width="640" height="480" allow="autoplay"></iframe>
 Built using:
 
 - Front-end library: React
